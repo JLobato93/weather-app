@@ -67,7 +67,7 @@ export default {
 .forecast-hour {
   align-self: end;
   padding-bottom: 20px;
-  color: rgba(255, 255, 255, 0.7);
+  color: hsl(330, 45%, 78%);
   font-weight: 500;
 }
 </style>

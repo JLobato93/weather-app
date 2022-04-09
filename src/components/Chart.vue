@@ -24,6 +24,7 @@ export default {
           ],
         },
         options: {
+          maintainAspectRatio: false,
           legend: {
             display: false,
           },
@@ -42,7 +43,7 @@ export default {
               {
                 display: false,
                 ticks: {
-                  //   beginAtZero: true,
+                    beginAtZero: true,
                   stepSize: 3,
                 },
               },
@@ -63,9 +64,10 @@ export default {
 .chart-container {
   position: absolute;
   width: 922px;
+  height:256px;
   z-index: 1000;
   left: 300px;
-  bottom: 460px;
+  bottom: 0;
 }
 #chart {
   position: absolute;

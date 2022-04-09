@@ -4,7 +4,6 @@ import router from '@/router'
 import store from '@/store'
 import "@/filters/converters";
 import "@/filters/string";
-
 Vue.config.productionTip = false
 
 new Vue({

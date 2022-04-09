@@ -10,13 +10,8 @@ export default new Vuex.Store({
     hourly: {},
     daily: {},
     unit: 'celsius',
-    city: "Amsterdam",
+    city: "Almere",
     chartData: [0, 0, 0, 0, 0],
-  },
-  getters: {
-    getChartData(state) {
-      state.chartData
-    }
   },
   mutations: {
     setCurrent(state, payload) { state.current = payload },
@@ -24,10 +19,11 @@ export default new Vuex.Store({
     setDaily(state, payload) { state.daily = payload.splice(1, 6) },
     setDegreeUnit(state) { state.unit = state.unit === 'celsius' ? 'fahrenheit' : 'celsius' },
     setChartData(state, payload) { state.chartData = helper.extractProperty(helper.threeHourForecast(payload), 'temp') },
+    setCity(state, payload) { state.city = payload.capitalize() },
   },
   actions: {
     async getWeather({ commit }) {
-      await axios.get("http://localhost:3000/weather").then(({ data }) => {
+      await axios.get(`http://localhost:3000/weather?city=${this.state.city}`).then(({ data }) => {
         commit('setCurrent', data.current);
         commit('setHourly', data.hourly);
         commit('setDaily', data.daily);

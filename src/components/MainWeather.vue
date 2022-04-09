@@ -2,7 +2,7 @@
   <div class="grid-container">
     <CurrentWeather />
     <TenHourForecast />
-    <Chart :data="this.chartData" :key="this.chartData.length"/>
+    <Chart :data="this.chartData" :key="this.current.dt"/>
     <div class="settings">
       <DegreeToggle />
     </div>
@@ -31,7 +31,7 @@ export default {
     };
   },
   computed: {
-    ...mapState(["chartData"]),
+    ...mapState(["chartData", "current" ]),
   },
   methods: {
     ...mapActions(["getWeather"]),
@@ -47,7 +47,7 @@ export default {
   display: grid;
   position: relative;
   grid-template-columns: 300px 1fr;
-  grid-template-rows: 500px;
+  grid-template-rows: 460px;
   grid-auto-flow: column;
   width: fit-content;
   margin: 0 auto;

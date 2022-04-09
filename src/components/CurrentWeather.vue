@@ -1,6 +1,7 @@
 <template>
   <div class="container">
-    <div class="current-city"> {{city}} </div>
+    <SearchBar />
+    <div class="spacer"></div>
     <div class="secondary">
       <div v-if="current.weather" class="current-temp">
         {{ current.temp | temperature(unit) }}
@@ -18,21 +19,23 @@
 </template>
 
 <script>
-import { mapState, mapActions } from "vuex";
+import { mapState, mapActions, mapMutations } from "vuex";
 import WeatherIcon from "@/components/WeatherIcon";
+import SearchBar from "@/components/SearchBar";
 export default {
   name: "CurrentWeather",
   data() {
     return {
-      selectedCity: "Amsterdam",
+      search: "",
     };
   },
   components: {
     WeatherIcon,
+    SearchBar,
   },
   computed: {
-    ...mapState(["current", "city", "unit"]),
-  }
+    ...mapState(["current", "unit"]),
+  },
 };
 </script>
 
@@ -43,16 +46,9 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.main {
-  padding-top: 100px;
+.spacer{
+  margin-top: 36px;
 }
-
-.current-city {
-  font-size: 40px;
-  color: white;
-  width: fit-content;
-}
-
 .current-temp {
   font-size: 48px;
   color: white;
@@ -69,6 +65,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-bottom: 30px
 }
 .air-details {
   font-size: 20px;
