@@ -1,12 +1,10 @@
 export default {
-    // return every third element from array
     threeHourForecast(array) {
         return array.filter((item, index) => {
             if (index !== 0 && index % 3 === 0 && index < 19)
                 return item;
         });
     },
-    // extract one property from array of objects
     extractProperty(array, property, limit) {
         let newArray = [];
         array.forEach((item, index) => {
