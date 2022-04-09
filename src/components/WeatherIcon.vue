@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .forecast-icon {
   display: inline-flex;
   justify-content: center;

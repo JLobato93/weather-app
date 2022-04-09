@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-
     <div class="hourly-forecast" v-for="hour in hourly" :key="hour.dt">
       <div class="forecast-degree">
         {{ hour.temp | temperature(unit) }}
@@ -18,13 +17,9 @@
 <script>
 import { mapState } from "vuex";
 import time from "@/mixins/time";
-import Degrees from "@/components/Degrees";
-
 export default {
   name: "TenHourForecast",
-  components: {
-    Degrees,
-  },
+  components: {},
   mixins: [time],
   computed: {
     ...mapState(["hourly", "unit"]),
@@ -32,7 +27,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .container {
   display: flex;
 }
@@ -41,6 +36,7 @@ export default {
   grid-template-columns: 128px;
   font-size: 20px;
   height: 100%;
+  z-index: 10;
 }
 .forecast-degree {
   align-self: end;

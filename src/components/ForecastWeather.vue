@@ -1,27 +1,25 @@
 <template>
-  <div>
-    <div class="container">
-      <div v-for="day in daily" :key="day.dt">
-        <div class="daily-forecast">
-          <WeatherIcon :weatherType="day.weather[0].main" />
-          <div class="forecast-temp">
-            <div class="forecast-temp-max">
-              {{ day.temp.max | temperature(unit) }}
-              <span class="degree-symbol">
-                {{ unit.getDegreeSymbol() }}
-              </span>
-            </div>
+  <div class="container">
+    <div v-for="day in daily" :key="day.dt">
+      <div class="daily-forecast">
+        <WeatherIcon :weatherType="day.weather[0].main" />
+        <div class="forecast-temp">
+          <div class="forecast-temp-max">
+            {{ day.temp.max | temperature(unit) }}
+            <span class="degree-symbol">
+              {{ unit.getDegreeSymbol() }}
+            </span>
+          </div>
 
-            <div class="forecast-temp-min">
-              {{ day.temp.min | temperature(unit) }}
-              <span class="degree-symbol">
-                {{ unit.getDegreeSymbol() }}
-              </span>
-            </div>
+          <div class="forecast-temp-min">
+            {{ day.temp.min | temperature(unit) }}
+            <span class="degree-symbol">
+              {{ unit.getDegreeSymbol() }}
+            </span>
           </div>
-          <div class="forecast-day">
-            {{ getDayOfWeek(getDate(day.dt)) | firstThreeLetters | uppercase }}
-          </div>
+        </div>
+        <div class="forecast-day">
+          {{ getDayOfWeek(getDate(day.dt)) | firstThreeLetters | uppercase }}
         </div>
       </div>
     </div>
@@ -31,7 +29,6 @@
 import { mapState } from "vuex";
 import time from "@/mixins/time";
 import WeatherIcon from "@/components/WeatherIcon";
-
 export default {
   name: "ForecastWeather",
   mixins: [time],

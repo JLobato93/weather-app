@@ -6,20 +6,24 @@ export default {
                 return item;
         });
     },
-
     // extract one property from array of objects
-    extractProperty(array, property) {
+    extractProperty(array, property, limit) {
         let newArray = [];
         array.forEach((item, index) => {
-            if (index < 7) newArray.push(this.convertToCelsius(item[property]))
+            if (index <= limit) newArray.push(item[property])
         });
         return newArray;
     },
-
-    // convert temperature from kelvin to celsius
-    convertToCelsius(temp) {
-        return Math.round(temp - 273.15);
-    }
+    transformChartTemp(data, unit) {
+        if (unit === 'celsius') {
+            return data.map(item => Math.round(item - 273.15));
+        }
+        else
+            return data.map(item => Math.round((item - 273.15) * 1.8 + 32));
+    },
+    alertNotification(message, type) {
+        alert(`An error occured with status: ${type} and message:${message}. Please try again.`);
+    },
 }
 
 String.prototype.getDegreeSymbol = function () {

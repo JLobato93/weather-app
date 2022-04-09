@@ -2,7 +2,7 @@
   <div class="container">
     <SearchBar />
     <div class="spacer"></div>
-    <div class="secondary">
+    <div class="current-weather">
       <div v-if="current.weather" class="current-temp">
         {{ current.temp | temperature(unit) }}
         <span class="degree-symbol">{{ unit.getDegreeSymbol() }}</span>
@@ -19,16 +19,11 @@
 </template>
 
 <script>
-import { mapState, mapActions, mapMutations } from "vuex";
+import { mapState } from "vuex";
 import WeatherIcon from "@/components/WeatherIcon";
 import SearchBar from "@/components/SearchBar";
 export default {
   name: "CurrentWeather",
-  data() {
-    return {
-      search: "",
-    };
-  },
   components: {
     WeatherIcon,
     SearchBar,
@@ -46,7 +41,7 @@ export default {
   justify-content: center;
   align-items: center;
 }
-.spacer{
+.spacer {
   margin-top: 36px;
 }
 .current-temp {
@@ -60,12 +55,12 @@ export default {
   font-size: 16px;
   padding-bottom: 18px;
 }
-.secondary {
+.current-weather {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-bottom: 30px
+  padding-bottom: 30px;
 }
 .air-details {
   font-size: 20px;

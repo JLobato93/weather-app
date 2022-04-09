@@ -8,13 +8,13 @@
 import Chart from "chart.js";
 export default {
   name: "Chart",
-  props: ["data"],
+  props: ["data", "labels"],
   data() {
     return {
       chartData: {
         type: "line",
         data: {
-          labels: ["mon", "tue", "wed", "thu", "fri", "sat", "sun"],
+          labels: this.labels,
           datasets: [
             {
               data: this.data,
@@ -55,7 +55,7 @@ export default {
   },
   mounted() {
     const ctx = document.getElementById("chart");
-    new Chart(ctx, this.chartData);
+    new Chart(ctx, this.data);
   },
 };
 </script>
@@ -63,9 +63,9 @@ export default {
 <style scoped>
 .chart-container {
   position: absolute;
-  width: 922px;
+  width: 768px;
   height:256px;
-  z-index: 1000;
+  z-index: 1;
   left: 300px;
   bottom: 0;
 }

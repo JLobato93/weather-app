@@ -5,8 +5,7 @@
       <input type="checkbox" @click="setDegreeUnit" />
       <span class="slider round"></span>
     </label>
-        <div class="symbol">°F</div>
-
+    <div class="symbol">°F</div>
   </div>
 </template>
 
@@ -20,8 +19,8 @@ export default {
 };
 </script>
 
-<style>
-.symbol{
+<style scoped>
+.symbol {
   display: inline-flex;
   padding: 0 20px;
   text-align: center;
